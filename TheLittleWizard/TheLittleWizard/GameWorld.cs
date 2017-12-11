@@ -114,10 +114,29 @@ namespace TheLittleWizard {
 
             for (int x = 0; x < 10; x++) {
                 for (int y = 0; y < 10; y++) {
-                    nodeMap[x, y] = new Node(x, y);
-                    gameObjects.Add(nodeMap[x, y]);
+                    if (CheckIfRoad(new Vector2(x, y))) {
+                        nodeMap[x, y] = new Node(x, y, "path");
+                        gameObjects.Add(nodeMap[x, y]);
+                    } else {
+                        nodeMap[x, y] = new Node(x, y);
+                        gameObjects.Add(nodeMap[x, y]);
+                    }
                 }
             }
+        }
+
+        private static readonly List<Vector2> roadSet = new List<Vector2>() { new Vector2(0,3), new Vector2(0,4),
+            new Vector2(0,5), new Vector2(0,6), new Vector2(0,7),
+            new Vector2(1,3), new Vector2(1,7),
+            new Vector2(2,3), new Vector2(2,7),
+            new Vector2(3,3), new Vector2(3,7),
+            new Vector2(4,3), new Vector2(4,7),
+            new Vector2(5,1), new Vector2(5,2), new Vector2(5,3), new Vector2(5,7), new Vector2(5,8),
+            new Vector2(6,1), new Vector2(6,8),
+            new Vector2(7,1),
+            new Vector2(8,1), new Vector2(8,2), new Vector2(8,3), new Vector2(8,4), new Vector2(8,5), new Vector2(8,6), new Vector2(8,7), new Vector2(8,8)};
+        private bool CheckIfRoad(Vector2 pos) {
+            return roadSet.Contains(pos);
         }
     }
 }
