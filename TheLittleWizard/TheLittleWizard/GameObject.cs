@@ -67,6 +67,11 @@ namespace TheLittleWizard {
                     rect2 = new Rectangle(0, 60, 200, 140);
                     break;
 
+                case "redMonster":
+                    rect = new Rectangle((int)position.X, (int)position.Y, GameWorld.nodeSize, GameWorld.nodeSize);
+                    rect2 = new Rectangle(0, 60, 200, 140);
+                    break;
+
 
                 default:
                     break;
