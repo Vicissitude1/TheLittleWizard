@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TheLittleWizard {
-    class GameObject {
+    public class GameObject {
         public Vector2 position;
 
         private GameObject() {
