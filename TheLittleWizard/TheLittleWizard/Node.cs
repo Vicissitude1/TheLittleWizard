@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace TheLittleWizard {
     class Node : GameObject {
-        private static readonly int squareSize = 32;
-
         public Node(int x, int y) {
-            position = new Vector2(x * squareSize, y * squareSize);
+            position = new Vector2(x * GameWorld.nodeSize, y * GameWorld.nodeSize);
+            textureName = "groundSingleTile";
         }
     }
 }

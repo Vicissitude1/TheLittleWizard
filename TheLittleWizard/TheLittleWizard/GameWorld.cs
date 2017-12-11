@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace TheLittleWizard {
     /// <summary>
@@ -10,6 +11,9 @@ namespace TheLittleWizard {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        public static readonly int nodeSize = 64;
+
+        List<GameObject> gameObjects;
         Node[,] nodeMap;
 
         public GameWorld() {
@@ -25,6 +29,12 @@ namespace TheLittleWizard {
         /// </summary>
         protected override void Initialize() {
             // TODO: Add your initialization logic here
+            graphics.PreferredBackBufferWidth = nodeSize * 10;
+            graphics.PreferredBackBufferHeight = nodeSize * 10;
+            graphics.ApplyChanges();
+
+            gameObjects = new List<GameObject>();
+
             SetupMap();
 
 
@@ -39,8 +49,11 @@ namespace TheLittleWizard {
         protected override void LoadContent() {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
             // TODO: use this.Content to load your game content here
+
+            foreach (GameObject obj in gameObjects) {
+                obj.LoadContent(Content);
+            }
         }
 
         /// <summary>
@@ -74,6 +87,14 @@ namespace TheLittleWizard {
 
             // TODO: Add your drawing code here
 
+            spriteBatch.Begin();
+
+            foreach (GameObject obj in gameObjects) {
+                obj.Draw(spriteBatch);
+            }
+
+            spriteBatch.End();
+
             base.Draw(gameTime);
         }
 
@@ -83,6 +104,7 @@ namespace TheLittleWizard {
             for (int x = 0; x < 10; x++) {
                 for (int y = 0; y < 10; y++) {
                     nodeMap[x, y] = new Node(x, y);
+                    gameObjects.Add(nodeMap[x, y]);
                 }
             }
         }
