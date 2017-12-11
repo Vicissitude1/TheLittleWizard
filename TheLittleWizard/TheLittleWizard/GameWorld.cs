@@ -9,8 +9,8 @@ namespace TheLittleWizard {
     public class GameWorld:Game {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        
-        
+
+        Node[,] nodeMap;
 
         public GameWorld() {
             graphics = new GraphicsDeviceManager(this);
@@ -25,6 +25,9 @@ namespace TheLittleWizard {
         /// </summary>
         protected override void Initialize() {
             // TODO: Add your initialization logic here
+            nodeMap = new Node[10, 10];
+
+
 
             base.Initialize();
         }
