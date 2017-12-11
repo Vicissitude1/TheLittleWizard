@@ -130,9 +130,22 @@ namespace TheLittleWizard {
                     nodeMap[i, j].AddObjectOnTop(new GameObject(i, j, "wallSingleTile"));
                 }
             }
+
+            nodeMap[1, 8].AddObjectOnTop(new GameObject(1, 7, "wizardFront"));
+            nodeMap[2, 4].AddObjectOnTop(new GameObject(2, 4, "tower"));
+            nodeMap[8, 7].AddObjectOnTop(new GameObject(8, 7, "iceTower"));
+            nodeMap[0, 8].AddObjectOnTop(new GameObject(1, 7, "portalA"));
             
+            for (int j = 7; j < 10; j += 2) {
+                for (int i = 2; i < 7; i++) {
+                    nodeMap[i, j].AddObjectOnTop(new GameObject(i, j, "tree"));
+                }
+            }
 
 
+            //randomise these;
+            gameObjects.Add(new GameObject(0, 0, "key"));
+            gameObjects.Add(new GameObject(9, 9, "key"));
         }
 
         private static readonly List<Vector2> roadSet = new List<Vector2>() {
