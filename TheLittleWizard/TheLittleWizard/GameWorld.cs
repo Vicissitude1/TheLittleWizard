@@ -25,7 +25,7 @@ namespace TheLittleWizard {
         /// </summary>
         protected override void Initialize() {
             // TODO: Add your initialization logic here
-            nodeMap = new Node[10, 10];
+            SetupMap();
 
 
 
@@ -75,6 +75,16 @@ namespace TheLittleWizard {
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
+        }
+
+        private void SetupMap() {
+            nodeMap = new Node[10, 10];
+
+            for (int x = 0; x < 10; x++) {
+                for (int y = 0; y < 10; y++) {
+                    nodeMap[x, y] = new Node(x, y);
+                }
+            }
         }
     }
 }
