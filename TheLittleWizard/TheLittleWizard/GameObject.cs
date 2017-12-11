@@ -34,7 +34,7 @@ namespace TheLittleWizard {
 
                 case "wallSingleTile":
                     rect = new Rectangle((int)position.X, (int)position.Y, GameWorld.nodeSize, GameWorld.nodeSize);
-                    rect2 = new Rectangle(59, 56, 78, 80);
+                    rect2 = new Rectangle(59, 56, 83, 83);
                     break;
 
                 case "tree":
