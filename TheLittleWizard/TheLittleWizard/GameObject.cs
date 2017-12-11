@@ -9,7 +9,7 @@ namespace TheLittleWizard {
     public class GameObject {
         public Vector2 position;
 
-        private GameObject() {
+        protected GameObject() {
             position = new Vector2();
         }
     }
