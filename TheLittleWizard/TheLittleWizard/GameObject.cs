@@ -42,6 +42,31 @@ namespace TheLittleWizard {
                     rect2 = new Rectangle(0, 60, 200, 140);
                     break;
 
+                case "portalA":
+                    rect = new Rectangle((int)position.X, (int)position.Y, GameWorld.nodeSize, GameWorld.nodeSize);
+                    rect2 = new Rectangle(0, 60, 200, 140);
+                    break;
+
+                case "iceTower":
+                    rect = new Rectangle((int)position.X, (int)position.Y, GameWorld.nodeSize, GameWorld.nodeSize);
+                    rect2 = new Rectangle(0, 60, 200, 140);
+                    break;
+
+                case "key":
+                    rect = new Rectangle((int)position.X, (int)position.Y, GameWorld.nodeSize, GameWorld.nodeSize);
+                    rect2 = new Rectangle(0, 60, 200, 140);
+                    break;
+
+                case "tower":
+                    rect = new Rectangle((int)position.X, (int)position.Y, GameWorld.nodeSize, GameWorld.nodeSize);
+                    rect2 = new Rectangle(0, 60, 200, 140);
+                    break;
+
+                case "wizardFront":
+                    rect = new Rectangle((int)position.X, (int)position.Y, GameWorld.nodeSize, GameWorld.nodeSize);
+                    rect2 = new Rectangle(0, 60, 200, 140);
+                    break;
+
 
                 default:
                     break;
