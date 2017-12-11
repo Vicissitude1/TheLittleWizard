@@ -9,6 +9,8 @@ namespace TheLittleWizard {
     public class GameWorld:Game {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        
+        
 
         public GameWorld() {
             graphics = new GraphicsDeviceManager(this);
