@@ -15,8 +15,12 @@ namespace TheLittleWizard {
         private Rectangle rect;
         private Rectangle rect2;
 
-        protected GameObject() {
+        public GameObject() {
             position = new Vector2();
+        }
+        public GameObject(int x, int y, string textureName) {
+            this.position = new Vector2(x * GameWorld.nodeSize, y * GameWorld.nodeSize);
+            this.textureName = textureName;
         }
 
         public void LoadContent(ContentManager content) {

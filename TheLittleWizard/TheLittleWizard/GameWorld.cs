@@ -12,7 +12,7 @@ namespace TheLittleWizard {
         private static GameWorld _instance;
         public static GameWorld instance {
             get {
-                if (instance == null) {
+                if (_instance == null) {
                     _instance = new GameWorld();
                 }
                 return _instance;
@@ -43,6 +43,7 @@ namespace TheLittleWizard {
             graphics.PreferredBackBufferWidth = nodeSize * 10;
             graphics.PreferredBackBufferHeight = nodeSize * 10;
             graphics.ApplyChanges();
+            this.IsMouseVisible = true;
 
             gameObjects = new List<GameObject>();
 
@@ -112,8 +113,8 @@ namespace TheLittleWizard {
         private void SetupMap() {
             nodeMap = new Node[10, 10];
 
-            for (int x = 0; x < 10; x++) {
-                for (int y = 0; y < 10; y++) {
+            for (int y = 0; y < 10; y++) {
+                for (int x = 0; x < 10; x++) {
                     if (CheckIfRoad(new Vector2(x, y))) {
                         nodeMap[x, y] = new Node(x, y, "path");
                         gameObjects.Add(nodeMap[x, y]);
@@ -123,18 +124,28 @@ namespace TheLittleWizard {
                     }
                 }
             }
+
+            for (int i = 4; i < 7; i++) {
+                for (int j = 1; j < 7; j++) {
+                    nodeMap[i, j].AddObjectOnTop(new GameObject(i, j, "wallSingleTile"));
+                }
+            }
+            
+
+
         }
 
-        private static readonly List<Vector2> roadSet = new List<Vector2>() { new Vector2(0,3), new Vector2(0,4),
-            new Vector2(0,5), new Vector2(0,6), new Vector2(0,7),
-            new Vector2(1,3), new Vector2(1,7),
-            new Vector2(2,3), new Vector2(2,7),
-            new Vector2(3,3), new Vector2(3,7),
-            new Vector2(4,3), new Vector2(4,7),
-            new Vector2(5,1), new Vector2(5,2), new Vector2(5,3), new Vector2(5,7), new Vector2(5,8),
-            new Vector2(6,1), new Vector2(6,8),
-            new Vector2(7,1),
-            new Vector2(8,1), new Vector2(8,2), new Vector2(8,3), new Vector2(8,4), new Vector2(8,5), new Vector2(8,6), new Vector2(8,7), new Vector2(8,8)};
+        private static readonly List<Vector2> roadSet = new List<Vector2>() {
+            new Vector2(3,0), new Vector2(4,0), new Vector2(5,0), new Vector2(6,0), new Vector2(7,0),
+            new Vector2(3,1), new Vector2(7,1),
+            new Vector2(3,2), new Vector2(7,2),
+            new Vector2(3,3), new Vector2(7,3),
+            new Vector2(3,4), new Vector2(7,4),
+            new Vector2(1,5), new Vector2(2,5), new Vector2(3,5), new Vector2(7,5), new Vector2(8,5),
+            new Vector2(1,6), new Vector2(8,6),
+            new Vector2(1,7),
+            new Vector2(1,8), new Vector2(2,8), new Vector2(3,8), new Vector2(4,8), new Vector2(5,8), new Vector2(6,8), new Vector2(7,8), new Vector2(8,8)
+        };
         private bool CheckIfRoad(Vector2 pos) {
             return roadSet.Contains(pos);
         }
