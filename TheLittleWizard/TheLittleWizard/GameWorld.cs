@@ -8,15 +8,26 @@ namespace TheLittleWizard {
     /// This is the main type for your game.
     /// </summary>
     public class GameWorld:Game {
+
+        private static GameWorld _instance;
+        public static GameWorld instance {
+            get {
+                if (instance == null) {
+                    _instance = new GameWorld();
+                }
+                return _instance;
+            }
+        }
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
         public static readonly int nodeSize = 64;
 
-        List<GameObject> gameObjects;
+        public List<GameObject> gameObjects;
         Node[,] nodeMap;
 
-        public GameWorld() {
+        private GameWorld() {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }

@@ -13,7 +13,7 @@ namespace TheLittleWizard {
         [STAThread]
         static void Main()
         {
-            using (var game = new GameWorld())
+            using (var game = GameWorld.instance)
                 game.Run();
         }
     }
