@@ -146,6 +146,8 @@ namespace TheLittleWizard {
             //randomise these;
             gameObjects.Add(new GameObject(0, 0, "key"));
             gameObjects.Add(new GameObject(9, 9, "key"));
+
+            for (int x = 0; x <)
         }
 
         private static readonly List<Vector2> roadSet = new List<Vector2>() {
