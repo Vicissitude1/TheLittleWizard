@@ -23,6 +23,11 @@ namespace TheLittleWizard {
             this.textureName = textureName;
         }
 
+        public void Update() {
+            rect.X = (int)position.X;
+            rect.Y = (int)position.Y;
+        }
+
         public void LoadContent(ContentManager content) {
             texture = content.Load<Texture2D>(textureName);
             switch (textureName) {

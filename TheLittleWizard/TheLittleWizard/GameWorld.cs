@@ -70,6 +70,12 @@ namespace TheLittleWizard {
             foreach (GameObject obj in gameObjects) {
                 obj.LoadContent(Content);
             }
+
+            foreach (Node node in nodeMap) {
+                node.neighbourHandler.Setup(nodeMap);
+            }
+
+            AStarPathFinder.Instance.SetupAStarPathFinder(nodeMap, nodeMap[1, 8], nodeMap[8, 8], keys, nodeMap[2, 5]);
         }
 
         /// <summary>
@@ -90,6 +96,12 @@ namespace TheLittleWizard {
                 Exit();
 
             // TODO: Add your update logic here
+
+            foreach (GameObject obj in gameObjects) {
+                obj.Update();
+            }
+
+            AStarPathFinder.Instance.Update();
 
             base.Update(gameTime);
         }
