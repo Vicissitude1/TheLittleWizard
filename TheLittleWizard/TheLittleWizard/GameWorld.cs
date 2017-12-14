@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 
 namespace TheLittleWizard {
@@ -116,6 +117,9 @@ namespace TheLittleWizard {
             for (int y = 0; y < 10; y++) {
                 for (int x = 0; x < 10; x++) {
                     if (CheckIfRoad(new Vector2(x, y))) {
+                        if (checkIfSingleTraversable(new Vector2(x,y))) {
+                            nodeMap[x, y] = new Node(x, y, "path", true);
+                        }
                         nodeMap[x, y] = new Node(x, y, "path");
                         gameObjects.Add(nodeMap[x, y]);
                     } else {
@@ -141,13 +145,25 @@ namespace TheLittleWizard {
                     nodeMap[i, j].AddObjectOnTop(new GameObject(i, j, "tree"));
                 }
             }
+            
+            List<Vector2> positionsForKeys = new List<Vector2>();
+            for (int x = 0; x < 10; x++) {
+                for (int y = 0; y < 10; y++) {
+                    if (nodeMap[x, y].traversable == true) {
+                        positionsForKeys.Add(new Vector2(x, y));
+                    }
+                }
+            }
 
+            Random rnd = new Random();
+            int first = rnd.Next(0, positionsForKeys.Count);
+            int second = -1;
+            while (second == -1 || second == first) {
+                second = rnd.Next(0, positionsForKeys.Count);
+            }
 
-            //randomise these;
-            gameObjects.Add(new GameObject(0, 0, "key"));
-            gameObjects.Add(new GameObject(9, 9, "key"));
-
-            for (int x = 0; x <)
+            gameObjects.Add(new GameObject((int)positionsForKeys[first].X, (int)positionsForKeys[first].Y, "key"));
+            gameObjects.Add(new GameObject((int)positionsForKeys[second].X, (int)positionsForKeys[second].Y, "key"));
         }
 
         private static readonly List<Vector2> roadSet = new List<Vector2>() {
@@ -163,6 +179,13 @@ namespace TheLittleWizard {
         };
         private bool CheckIfRoad(Vector2 pos) {
             return roadSet.Contains(pos);
+        }
+
+        private static readonly List<Vector2> singleTraversableRoadSet = new List<Vector2>() {
+            new Vector2(2,8), new Vector2(3,8), new Vector2(4,8), new Vector2(5,8), new Vector2(6,8)
+        };
+        private bool checkIfSingleTraversable(Vector2 pos) {
+            return singleTraversableRoadSet.Contains(pos);
         }
     }
 }
