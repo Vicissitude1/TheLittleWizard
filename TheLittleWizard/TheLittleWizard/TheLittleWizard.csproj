@@ -38,6 +38,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Dijkstra.cs" />
     <Compile Include="AStarPathFinder.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="GameWorld.cs" />
