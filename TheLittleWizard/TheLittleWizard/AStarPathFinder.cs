@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TheLittleWizard {
-    public class Dijkstra {
+    public class AStarPathFinder {
         public bool isSetup;
-        private static Dijkstra instance;
-        public static Dijkstra Instance {
+        private static AStarPathFinder instance;
+        public static AStarPathFinder Instance {
             get {
                 if (instance == null) {
-                    instance = new Dijkstra();
+                    instance = new AStarPathFinder();
                 }
                 return instance;
             }
@@ -26,11 +26,11 @@ namespace TheLittleWizard {
         private Node intermediary;
         private GameObject[] keys;
 
-        private Dijkstra() {
+        private AStarPathFinder() {
 
         }
 
-        public void SetupDijkstraPathFinder(Node[,] map, Node start, Node end, GameObject[] keys, Node intermediary) {
+        public void SetupAStarPathFinder(Node[,] map, Node start, Node end, GameObject[] keys, Node intermediary) {
             this.map = map;
             this.current = start;
             this.end = end;
