@@ -30,7 +30,7 @@ namespace TheLittleWizard {
 
         }
 
-        public void SetupDijkstraPathFinder(Node[,] map, Node start, Node end, GameObject[] keys, Node intermediary) {
+        public void SetupDijkstra(Node[,] map, Node start, Node end, GameObject[] keys, Node intermediary) {
             this.map = map;
             this.current = start;
             this.end = end;
@@ -44,14 +44,14 @@ namespace TheLittleWizard {
         List<Node> closedList = new List<Node>();
         private Stack<Node> GeneratePathToGoal(Node goal) {
             foreach (Node n in map) {
-                n.ResetFGX();
+                n.ResetDijkstraFGX();
             }
             openList.Clear();
             closedList.Clear();
             openList.Add(current);
-            current.h = (int)Vector2.Distance(current.position, goal.position);
+            
             current.g = 0;
-            current.f = current.h;
+            current.f = 0;
             while (openList.Count > 0) {
                 Node chosenNode = openList[0];
                 foreach (Node n in openList) {
@@ -64,7 +64,7 @@ namespace TheLittleWizard {
 
                 foreach (Node neighbour in chosenNode.neighbourHandler.AllNeighbhours) {
                     if (neighbour.traversable) {
-                        neighbour.CalculateFGX(chosenNode, goal);
+                        neighbour.CalculateDijkstraFGX(chosenNode, goal);
                         if (!closedList.Contains(neighbour) && !openList.Contains(neighbour)) {
                             openList.Add(neighbour);
                         }
@@ -163,7 +163,7 @@ namespace TheLittleWizard {
                         }
                     }
                 } else {
-                    if (Keyboard.GetState().IsKeyDown(Keys.A)) {
+                    if (Keyboard.GetState().IsKeyDown(Keys.D)) {
                         Activate = true;
                         closestKey = Vector2.Distance(keys[0].position, current.position) < Vector2.Distance(keys[1].position, current.position) ? 0 : 1;
                         sw.Start();

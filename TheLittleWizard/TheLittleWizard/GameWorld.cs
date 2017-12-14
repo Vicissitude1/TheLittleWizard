@@ -76,6 +76,7 @@ namespace TheLittleWizard {
             }
 
             AStarPathFinder.Instance.SetupAStarPathFinder(nodeMap, nodeMap[1, 8], nodeMap[8, 8], keys, nodeMap[2, 5]);
+            Dijkstra.Instance.SetupDijkstra(nodeMap, nodeMap[1, 8], nodeMap[8, 8], keys, nodeMap[2, 5]);
         }
 
         /// <summary>
@@ -102,6 +103,7 @@ namespace TheLittleWizard {
             }
 
             AStarPathFinder.Instance.Update();
+            Dijkstra.Instance.Update();
 
             base.Update(gameTime);
         }

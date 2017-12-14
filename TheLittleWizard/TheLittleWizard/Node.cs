@@ -79,5 +79,24 @@ namespace TheLittleWizard {
             f = 0;
             parent = null;
         }
+
+        public void CalculateDijkstraFGX(Node parent, Node end) {
+            if (g <= 0) {
+                g = ((int)(Vector2.Distance(parent.position, position) + parent.g)) / 4;
+                this.parent = parent;
+            } else {
+                if (g > (int)(Vector2.Distance(parent.position, position) + parent.g)) {
+                    this.parent = parent;
+                    g = ((int)(Vector2.Distance(parent.position, position) + parent.g)) / 4;
+                }
+            }
+            
+            f = g + h;
+        }
+        public void ResetDijkstraFGX() {
+            g = 0;
+            f = 0;
+            parent = null;
+        }
     }
 }
