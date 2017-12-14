@@ -17,12 +17,14 @@ namespace TheLittleWizard {
             position = new Vector2(x * GameWorld.nodeSize, y * GameWorld.nodeSize);
             textureName = "groundSingleTile";
             traversable = true;
+            traversableOnce = false;
         }
         public Node(int x, int y, string nameOfTexture) {
             TilePos = new Vector2(x, y);
             position = new Vector2(x * GameWorld.nodeSize, y * GameWorld.nodeSize);
             textureName = nameOfTexture;
             traversable = true;
+            traversableOnce = false;
         }
         public Node(int x, int y, string nameOfTexture, bool traversableOnce) {
             TilePos = new Vector2(8, 5);
