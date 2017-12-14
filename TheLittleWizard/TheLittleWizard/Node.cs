@@ -54,7 +54,10 @@ namespace TheLittleWizard {
 
         public Vector2 Traverse() {
             if (traversableOnce) {
-                GameWorld.instance.gameObjects.Add(new GameObject((int)TilePos.X, (int)TilePos.Y, "redMonster"));
+                GameObject monster = new GameObject((int)TilePos.X, (int)TilePos.Y, "redMonster");
+                monster.LoadContent(GameWorld.instance.Content);
+                GameWorld.instance.gameObjects.Add(monster);
+                
                 traversable = false;
             }
             return position;

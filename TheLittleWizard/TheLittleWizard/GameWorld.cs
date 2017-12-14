@@ -136,8 +136,9 @@ namespace TheLittleWizard {
                     if (CheckIfRoad(new Vector2(x, y))) {
                         if (checkIfSingleTraversable(new Vector2(x,y))) {
                             nodeMap[x, y] = new Node(x, y, "path", true);
+                        } else {
+                            nodeMap[x, y] = new Node(x, y, "path");
                         }
-                        nodeMap[x, y] = new Node(x, y, "path");
                         gameObjects.Add(nodeMap[x, y]);
                     } else {
                         nodeMap[x, y] = new Node(x, y);
