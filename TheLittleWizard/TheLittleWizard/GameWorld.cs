@@ -26,6 +26,8 @@ namespace TheLittleWizard {
         public static readonly int nodeSize = 64;
 
         public List<GameObject> gameObjects;
+        public GameObject player;
+        public GameObject[] keys;
         Node[,] nodeMap;
 
         private GameWorld() {
@@ -47,6 +49,7 @@ namespace TheLittleWizard {
             this.IsMouseVisible = true;
 
             gameObjects = new List<GameObject>();
+            keys = new GameObject[2];
 
             SetupMap();
 
@@ -135,7 +138,8 @@ namespace TheLittleWizard {
                 }
             }
 
-            nodeMap[1, 8].AddObjectOnTop(new GameObject(1, 8, "wizardFront"));
+            player = new GameObject(1, 8, "wizardFront");
+            gameObjects.Add(player);
             nodeMap[2, 4].AddObjectOnTop(new GameObject(2, 4, "tower"));
             nodeMap[8, 7].AddObjectOnTop(new GameObject(8, 7, "iceTower"));
             nodeMap[0, 8].AddObjectOnTop(new GameObject(0, 8, "portalA"));
@@ -161,9 +165,10 @@ namespace TheLittleWizard {
             while (second == -1 || second == first) {
                 second = rnd.Next(0, positionsForKeys.Count);
             }
-
-            gameObjects.Add(new GameObject((int)positionsForKeys[first].X, (int)positionsForKeys[first].Y, "key"));
-            gameObjects.Add(new GameObject((int)positionsForKeys[second].X, (int)positionsForKeys[second].Y, "key"));
+            keys[0] = new GameObject((int)positionsForKeys[first].X, (int)positionsForKeys[first].Y, "key");
+            keys[1] = new GameObject((int)positionsForKeys[second].X, (int)positionsForKeys[second].Y, "key");
+            gameObjects.Add(keys[0]);
+            gameObjects.Add(keys[1]);
         }
 
         private static readonly List<Vector2> roadSet = new List<Vector2>() {
