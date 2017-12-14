@@ -39,5 +39,13 @@ namespace TheLittleWizard {
             traversable = false;
             GameWorld.instance.gameObjects.Add(obj);
         }
+
+        public Vector2 Traverse() {
+            if (traversableOnce) {
+                GameWorld.instance.gameObjects.Add(new GameObject((int)TilePos.X, (int)TilePos.Y, "redMonster"));
+                traversable = false;
+            }
+            return position;
+        }
     }
 }
