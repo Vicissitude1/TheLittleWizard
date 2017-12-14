@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TheLittleWizard {
-    class Node : GameObject {
+    public class Node : GameObject {
         public Vector2 TilePos { get; private set; }
         public bool traversable;
         public bool traversableOnce;

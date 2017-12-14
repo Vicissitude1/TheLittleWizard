@@ -28,7 +28,7 @@ namespace TheLittleWizard {
         public List<GameObject> gameObjects;
         public GameObject player;
         public GameObject[] keys;
-        Node[,] nodeMap;
+        public Node[,] nodeMap;
 
         private GameWorld() {
             graphics = new GraphicsDeviceManager(this);
