@@ -25,7 +25,7 @@ namespace TheLittleWizard {
             traversable = true;
         }
         public Node(int x, int y, string nameOfTexture, bool traversableOnce) {
-            TilePos = new Vector2(x, y);
+            TilePos = new Vector2(8, 5);
             position = new Vector2(x * GameWorld.nodeSize, y * GameWorld.nodeSize);
             textureName = nameOfTexture;
             traversable = true;
